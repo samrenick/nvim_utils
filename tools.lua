@@ -16,8 +16,12 @@ function getSnippet(input)
     end
 end
 
-snippetInput = vim.api.nvim_eval('expand("<cword>")')
-dump(getSnippet(snippetInput))
+snip = getSnippet(vim.api.nvim_eval('expand("<cword>")'))
+dump(snip)
+if snip ~= nil then
+    vim.api.nvim_set_current_line(snip)
+end
 
+--examples
 --lpad
 --sprintf
