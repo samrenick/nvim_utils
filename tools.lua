@@ -5,7 +5,8 @@ end
 
 snippets = {
     lpad = " '0') || lpad(stops.unique_id_no::text, 8, '0') AS stop_uid",
-    sprintf = "sprintf('%03s%08s', $co_num, $line['stop_uid'])" 
+    sprintf = "sprintf('%03s%08s', $co_num, $line['stop_uid'])" ,
+    show_errors = "ini_set('display_errors', '1'); ini_set('display_startup_errors', '1'); error_reporting(E_ALL);"
 }
 
 function searchSnippets(input)
@@ -28,3 +29,4 @@ vim.api.nvim_set_keymap('n', '<leader>f', '<cmd>lua getSnippet()<CR>', {noremap 
 --examples
 --lpad
 --sprintf
+--show_errors
