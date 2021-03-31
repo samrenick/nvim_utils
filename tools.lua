@@ -8,7 +8,7 @@ snippets = {
     sprintf = "sprintf('%03s%08s', $co_num, $line['stop_uid'])" 
 }
 
-function getSnippet(input)
+function searchSnippets(input)
     for key, val in pairs(snippets) do
         if string.find(key, input) then
             return(val)
@@ -16,11 +16,14 @@ function getSnippet(input)
     end
 end
 
-snip = getSnippet(vim.api.nvim_eval('expand("<cword>")'))
-dump(snip)
-if snip ~= nil then
-    vim.api.nvim_set_current_line(snip)
+function getSnippet()
+    snip = searchSnippets(vim.api.nvim_eval('expand("<cword>")'))
+    if snip ~= nil then
+        vim.api.nvim_set_current_line(snip)
+    end
 end
+
+vim.api.nvim_set_keymap('n', '<leader>f', '<cmd>lua getSnippet()<CR>', {noremap = true})
 
 --examples
 --lpad
